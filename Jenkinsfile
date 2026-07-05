@@ -18,9 +18,9 @@ pipeline {
         stage('Building Artifacts') {
             steps {
                 script {
-                    docker.image('maven:3.9.9-eclipse-temurin-21').inside {
-                        sh 'mvn clean package'
-                    }
+                    docker.image('maven:3.9.9-eclipse-temurin-21').inside('-e HOME=/tmp') {
+ 			   sh 'mvn clean package'
+		    }
                 }
             }
         }
